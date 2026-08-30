@@ -10,6 +10,24 @@ It goes beyond CRUD: **data ingestion → feature engineering → EDA → decisi
 
 ---
 
+## 🖥️ Product preview
+
+### Executive command center
+
+A recruiter-facing overview of the product experience: live analytics status, monthly KPIs, savings performance, and navigation across the decision-support modules.
+
+![FinSight executive finance dashboard](assets/screenshots/finsight-executive-dashboard.png)
+
+### Spending intelligence
+
+The analytics workspace combines income-versus-expense trends with category concentration and behavioral signals.
+
+![FinSight spending analytics dashboard](assets/screenshots/finsight-spending-intelligence.png)
+
+> Screenshots use synthetic portfolio data; no personal financial information is included.
+
+---
+
 ## 🎯 What this project demonstrates
 
 | Area | Technique |
