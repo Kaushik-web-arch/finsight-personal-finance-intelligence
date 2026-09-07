@@ -3,7 +3,6 @@
 [![Tests](https://github.com/Kaushik-web-arch/finsight-personal-finance-intelligence/actions/workflows/tests.yml/badge.svg)](https://github.com/Kaushik-web-arch/finsight-personal-finance-intelligence/actions/workflows/tests.yml)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.62+-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-34D399.svg)](LICENSE)
 
 A recruiter-ready personal finance product with an Executive Fintech interface and a complete data-science pipeline.
 It goes beyond CRUD: **data ingestion → feature engineering → EDA → decision support → forecasting → risk classification → anomaly detection**.
@@ -167,5 +166,8 @@ jupyter notebook notebooks/analysis.ipynb
 
 ---
 
-## 📝 License
-MIT — use freely for academic submission.
+## Copyright
+
+© 2026 **Kaushik Santhosh**. All rights reserved.
+
+This repository and its source code are provided publicly for portfolio, educational review, and demonstration purposes. No permission is granted to copy, modify, redistribute, sublicense, or use substantial portions of this project without prior written permission from the copyright holder.
