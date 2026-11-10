@@ -4,7 +4,7 @@
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.62+-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 
-A recruiter-ready personal finance product with an Executive Fintech interface and a complete data-science pipeline.
+A local personal finance application with a Streamlit interface and an educational data-science pipeline.
 It goes beyond CRUD: **data ingestion → feature engineering → EDA → decision support → forecasting → risk classification → anomaly detection**.
 
 ---
@@ -36,7 +36,7 @@ The analytics workspace combines income-versus-expense trends with category conc
 | Feature engineering | `month`, `day_of_week`, `is_weekend`, rolling stats, `expense_ratio` |
 | EDA | trend, category, behavioral pattern analysis |
 | Insight engine | rule-based natural-language insight generation |
-| ML — Regression | Linear Regression for next-month expense forecast |
+| ML — Regression | Linear regression and three-month moving-average forecast baselines |
 | ML — Classification | Logistic Regression for overspend prediction |
 | Anomaly detection | Z-score + IQR (per category) |
 | Pattern mining | Recurring expense detection (amount + interval) |
@@ -130,10 +130,10 @@ python -m unittest discover -s tests -v
 - **Behavioral analysis** — weekend vs weekday, day-of-week heatmap
 - **Budgets** — set per-category budget, see over-budget flags
 - **🔍 Insights** — auto-generated natural-language statements
-- **📈 Forecast** — next-month expense via Linear Regression
+- **📈 Forecast** — next-month expense via linear regression or a three-month moving average
 - **🚨 Anomalies** — unusually large transactions per category
 - **🔄 Recurring** — auto-detected subscriptions / bills
-- **🎯 Overspend classifier** — predicts if you'll go over budget this month
+- **🎯 Overspend classifier** — exploratory expense-versus-income risk signal
 - **Filtered ledger** — search, filter, inspect, and export transaction subsets
 
 ---
@@ -165,6 +165,20 @@ jupyter notebook notebooks/analysis.ipynb
 > *"I built FinSight, a decision-focused personal finance product that transforms raw transactions into behavioral insights, a safe-to-spend monthly plan, model-selected expense forecasts, overspending risk, and statistical anomaly alerts. I also designed a reusable Executive Fintech UI system in Streamlit and Plotly."*
 
 ---
+
+## Evaluation boundaries
+
+- [src/prediction.py](src/prediction.py) selects linear regression or a three-month moving average using MAE on one held-out final observation. This is a limited baseline comparison, not a multi-window walk-forward study.
+- [src/classifier.py](src/classifier.py) reports training-set accuracy. It is not an unseen-data accuracy score. The target is expense exceeding income, not exceeding a user-defined category budget.
+- The classifier's current-month wording and prediction features need alignment: inference uses the latest month's expense, rolling mean and expense ratio as prior context. Treat the output as an exploratory signal until the prediction horizon is specified and evaluated.
+- [src/insights.py](src/insights.py) generates rule-based text; it does not call an LLM.
+- [tests/test_planner.py](tests/test_planner.py) covers spending-plan calculations and category guardrails, not forecast or classifier accuracy.
+
+### Reproducing evidence
+
+Run the generator and test commands above in a disposable local installation. Record the commit, dependency versions, synthetic-data period and actual test result. Demonstrate how changing a savings goal changes the allowance, and how an unpaid recurring bill is reserved.
+
+Before publishing ML performance claims, evaluate chronological holdout windows, report sample counts and compare against simple baselines. Keep synthetic-data results explicitly labeled; no real-world savings, forecasting-accuracy improvement or user adoption is established here.
 
 ## Copyright
 
